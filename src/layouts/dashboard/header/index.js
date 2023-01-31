@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // components
@@ -43,6 +43,19 @@ Header.propTypes = {
 };
 
 export default function Header({ onOpenNav }) {
+  const  changeTitle = () => {
+    switch(window.location.pathname){
+      case '/dashboard/enquiry':
+        return 'Enquiry';
+        case '/dashboard/order-open':
+          return 'Order';
+          case '/dashboard/snaglist-open':
+            return 'Snaglist';
+      default:
+        return 'Hi, Welcome Back';
+    }
+  }
+  const title=changeTitle();
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -57,7 +70,10 @@ export default function Header({ onOpenNav }) {
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
 
-        <Searchbar />
+        <Typography variant="h4" gutterBottom sx={{color:"black"}}>
+            {title}
+          </Typography>
+      
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack
@@ -68,7 +84,8 @@ export default function Header({ onOpenNav }) {
             sm: 1,
           }}
         >
-          <LanguagePopover />
+          <Searchbar />
+          {/* <LanguagePopover /> */}
           <NotificationsPopover />
           <AccountPopover />
         </Stack>

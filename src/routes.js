@@ -3,12 +3,13 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
 //
-import BlogPage from './pages/BlogPage';
-import UserPage from './pages/UserPage';
+
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
-import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import Enquiry from './pages/Enquiry';
+import Order from "./pages/Order";
+import Snaglist from "./pages/Snaglist";
 
 // ----------------------------------------------------------------------
 
@@ -20,15 +21,15 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { path: 'enquiry', element: <Enquiry /> },
+        { path: 'order-open', element: <Order /> },
+        { path: 'snaglist-open', element: <Snaglist /> },
       ],
     },
-    {
-      path: 'login',
-      element: <LoginPage />,
-    },
+    // {
+    //   path: 'login',
+    //   element: <LoginPage />,
+    // },
     {
       element: <SimpleLayout />,
       children: [
